@@ -40,6 +40,9 @@
                             <constraint firstItem="UXY-Hp-S5Y" firstAttribute="bottom" secondItem="wfy-db-euE" secondAttribute="top" id="uzt-q5-HmV"/>
                         </constraints>
                     </view>
+                    <connections>
+                        <outlet property="mapView" destination="UXY-Hp-S5Y" id="w9c-DA-JOn"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
