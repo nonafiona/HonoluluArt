@@ -19,6 +19,12 @@ class ViewController: UIViewController {
         
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         centerMapOnLocation(initialLocation)
+        
+        let artwork = Artwork(title: "King David Kalakaua",
+                              locationName: "Waikiki Gateway Park",
+                              discipline: "Sculpture",
+                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+        mapView.addAnnotation(artwork)
     }
 
     let regionRadius: CLLocationDistance = 1000 // 1 km or 1000 meters or little bit over 1/2 mile
