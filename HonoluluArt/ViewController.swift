@@ -15,9 +15,10 @@ class ViewController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        // Do any additional setup after loading the view, typically from a nib.
+        // setting initial location as Honolulu
+        
+        let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
     }
-
 
 
 }
