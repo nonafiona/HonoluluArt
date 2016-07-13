@@ -25,6 +25,9 @@ class ViewController: UIViewController {
                               discipline: "Sculpture",
                               coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
         mapView.addAnnotation(artwork)
+        
+        // mapView delegate 
+        mapView.delegate = self 
     }
 
     let regionRadius: CLLocationDistance = 1000 // 1 km or 1000 meters or little bit over 1/2 mile

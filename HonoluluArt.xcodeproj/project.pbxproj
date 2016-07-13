@@ -15,6 +15,7 @@
 		BA701A171D344F4C002B856E /* JSON.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA701A151D344F4C002B856E /* JSON.swift */; };
 		BA701A181D344F4C002B856E /* PublicArt.json in Resources */ = {isa = PBXBuildFile; fileRef = BA701A161D344F4C002B856E /* PublicArt.json */; };
 		BA701A1A1D345078002B856E /* Artwork.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA701A191D345078002B856E /* Artwork.swift */; };
+		BA701A1C1D345650002B856E /* VCMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BA701A1B1D345650002B856E /* VCMapView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		BA701A151D344F4C002B856E /* JSON.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = JSON.swift; sourceTree = "<group>"; };
 		BA701A161D344F4C002B856E /* PublicArt.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = PublicArt.json; sourceTree = "<group>"; };
 		BA701A191D345078002B856E /* Artwork.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Artwork.swift; sourceTree = "<group>"; };
+		BA701A1B1D345650002B856E /* VCMapView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = VCMapView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -63,6 +65,7 @@
 				BA701A021D342870002B856E /* AppDelegate.swift */,
 				BA701A041D342870002B856E /* ViewController.swift */,
 				BA701A191D345078002B856E /* Artwork.swift */,
+				BA701A1B1D345650002B856E /* VCMapView.swift */,
 				BA701A141D344F4C002B856E /* HonoluluArtResources */,
 				BA701A061D342870002B856E /* Main.storyboard */,
 				BA701A091D342870002B856E /* Assets.xcassets */,
@@ -156,6 +159,7 @@
 			files = (
 				BA701A171D344F4C002B856E /* JSON.swift in Sources */,
 				BA701A051D342870002B856E /* ViewController.swift in Sources */,
+				BA701A1C1D345650002B856E /* VCMapView.swift in Sources */,
 				BA701A1A1D345078002B856E /* Artwork.swift in Sources */,
 				BA701A031D342870002B856E /* AppDelegate.swift in Sources */,
 			);
