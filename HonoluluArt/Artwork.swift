@@ -8,7 +8,8 @@
 
 import Foundation
 import MapKit
-import AddressBook
+import Contacts
+// previously was : import AddressBook
 
 class Artwork: NSObject, MKAnnotation {
     let title: String?
@@ -33,7 +34,12 @@ class Artwork: NSObject, MKAnnotation {
     // hahahaaahah !!! it worked !!! thank u stack overflow :") 
     // recasted objects and delegated them to self? 
     func mapItem() -> MKMapItem {
-        let addressDictionary = [String(kABPersonAddressStreetKey): self.subtitle as! AnyObject]
+        
+        
+        
+        let addressDictionary = [String(CNPostalAddressStreetKey): self.subtitle!]
+        // experimental change ^ ^ ^ ^ ^
+        // previously was : [String(kABPersonAddressStreetKey): self.subtitle as! AnyObject] ^ ^ ^ ^
         
         let placemark = MKPlacemark(coordinate: self.coordinate, addressDictionary: addressDictionary)
         let mapItem = MKMapItem(placemark: placemark)
