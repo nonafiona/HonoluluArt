@@ -8,6 +8,7 @@
 
 import Foundation
 import MapKit
+import AddressBook
 
 class Artwork: NSObject, MKAnnotation {
     let title: String?
@@ -25,5 +26,20 @@ class Artwork: NSObject, MKAnnotation {
     }
     var subtitle: String? {
         return locationName
+    }
+    
+    // annotation callout info button opens this mapItem in Maps app
+    
+    // hahahaaahah !!! it worked !!! thank u stack overflow :") 
+    // recasted objects and delegated them to self? 
+    func mapItem() -> MKMapItem {
+        let addressDictionary = [String(kABPersonAddressStreetKey): self.subtitle as! AnyObject]
+        
+        let placemark = MKPlacemark(coordinate: self.coordinate, addressDictionary: addressDictionary)
+        let mapItem = MKMapItem(placemark: placemark)
+        
+        mapItem.name = self.title
+        
+        return mapItem
     }
 }

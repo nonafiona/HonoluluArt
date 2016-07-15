@@ -44,4 +44,24 @@ extension ViewController: MKMapViewDelegate {
         }
          return nil
     }
+    
+    // delegates to provide the correct address when the callout button is tapped...
+    
+    // basically, when a user taps on a map annotation pin, the callout shows an info button
+    // when the user taps the info button, calloutAccessoryControlTapped method is called!
+    
+    func mapView(mapView: MKMapView!, annotationView view: MKAnnotationView!, calloutAccessoryControlTapped control: UIControl!) {
+        
+        // grabs Artwork object that the tap refers to
+        
+        let location = view.annotation as! Artwork
+        
+        // creates associated MKMapItem & calls openInMapsWithLaunchOptions upon the the map item
+        // passes a Dictionary through this method
+        // sets DirectionModeKeys to Driving 
+        // - which will show driving directions from the user's location to the pin
+        
+        let launchOptions = [MKLaunchOptionsDirectionsModeKey: MKLaunchOptionsDirectionsModeDriving]
+        location.mapItem().openInMapsWithLaunchOptions(launchOptions)
+    }
 }
