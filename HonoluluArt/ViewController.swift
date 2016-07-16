@@ -13,6 +13,31 @@ class ViewController: UIViewController {
 
     @IBOutlet weak var mapView: MKMapView!
     
+    var artworks = [Artwork]()
+    
+    func loadInitialData () {
+        //1 
+        let fileName = NSBundle.mainBundle().pathForResource("PublicArt", ofType: "json")
+        var readError: NSError?
+        var data: NSData = NSData(contentsOfFile: fileName!, options: NSDataReadingOptions(0), error: &readError)!
+        
+        // 2
+        var error: NSError?
+        let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
+        
+        // 3
+        if let jsonObject = jsonObject as? [String: AnyObject] where error == nil,
+        // 4
+            let jsonData = JSONValue.fromObject(jsonObject)?["data"]?.array {
+            for artworkJSON in jsonData {
+                if let artworkJSON = artworkJSON.array,
+                    artwork = Artwork.fromJSON(artworkJSON){
+                        artworks.append(artwork)
+                }
+            }
+        }
+    }
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         // setting initial location as Honolulu
@@ -20,15 +45,22 @@ class ViewController: UIViewController {
         let initialLocation = CLLocation(latitude: 21.282778, longitude: -157.829444)
         centerMapOnLocation(initialLocation)
         
-        let artwork = Artwork(title: "King David Kalakaua",
-                              locationName: "Waikiki Gateway Park",
-                              discipline: "Sculpture",
-                              coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
-        mapView.addAnnotation(artwork)
+        // useless test obj.
+        
+        //let artwork = Artwork(title: "King David Kalakaua",
+                              //locationName: "Waikiki Gateway Park",
+                              //discipline: "Sculpture",
+                              //coordinate: CLLocationCoordinate2D(latitude: 21.283921, longitude: -157.831661))
+        //mapView.addAnnotation(artwork)
+        
+        
+        loadInitialData()
+        mapView.addAnnotations(artworks)
         
         // mapView delegate 
         mapView.delegate = self 
     }
+    
 
     let regionRadius: CLLocationDistance = 1000 // 1 km or 1000 meters or little bit over 1/2 mile
     func centerMapOnLocation(location: CLLocation) {
