@@ -15,28 +15,32 @@ class ViewController: UIViewController {
     
     var artworks = [Artwork]()
     
-    func loadInitialData () {
-        //1 
-        let fileName = NSBundle.mainBundle().pathForResource("PublicArt", ofType: "json")
-        var readError: NSError?
-        var data: NSData = NSData(contentsOfFile: fileName!, options: NSDataReadingOptions(0), error: &readError)!
+    func loadInitialData() {
+        // 1
+        let fileName = NSBundle.mainBundle().pathForResource("PublicArt", ofType: "json");
+        var readError : NSError?
+        var data: NSData = NSData(contentsOfFile: fileName!, options: NSDataReadingOptions(0),
+                                  error: &readError)!
         
         // 2
         var error: NSError?
-        let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data, options: NSJSONReadingOptions(0), error: &error)
+        let jsonObject: AnyObject! = NSJSONSerialization.JSONObjectWithData(data,
+                                                                            options: NSJSONReadingOptions(0), error: &error)
         
         // 3
         if let jsonObject = jsonObject as? [String: AnyObject] where error == nil,
-        // 4
+            // 4
             let jsonData = JSONValue.fromObject(jsonObject)?["data"]?.array {
             for artworkJSON in jsonData {
                 if let artworkJSON = artworkJSON.array,
-                    artwork = Artwork.fromJSON(artworkJSON){
-                        artworks.append(artwork)
+                    // 5
+                    artwork = Artwork.fromJSON(artworkJSON) {
+                    artworks.append(artwork)
                 }
             }
         }
     }
+
     
     override func viewDidLoad() {
         super.viewDidLoad()
